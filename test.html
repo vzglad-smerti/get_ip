@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script src="GetIp.js"></script>
+    </head>
+    <body>
+
+        <h4>Локальный ip:</h4>
+        <ul></ul>
+        <h4>Публичный ip:</h4>
+        <ul></ul>
+        <h4>IPv6 адрес:</h4>
+        <ul></ul>
+        
+        <script>
+        GetIp(function(ip){
+          var li = document.createElement("li");
+          li.textContent = ip;
+          if (ip.match(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/)){
+            document.getElementsByTagName("ul")[0].appendChild(li);
+				  }else if (ip.match(/^[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7}$/)){
+            document.getElementsByTagName("ul")[2].appendChild(li);
+				  }else{
+					  document.getElementsByTagName("ul")[1].appendChild(li);
+				  }
+        });
+        </script>
+    </body>
+</html>
